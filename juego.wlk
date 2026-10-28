@@ -30,10 +30,16 @@ object juego {
   const peligrosDelPiso = []
   var property enCurso = false
   var property mensaje = ""
+  var estado = "menu"
+  var cartelVisible = false
+
+  method estaEnMenu() = estado == "menu"
+  method estaPerdido() = estado == "perdido"
+  method estaGanado() = estado == "ganado"
 
   // ---------------- Configuración ----------------
   method configurar() {
-    game.title("Sube y Baja")
+    game.title("Ovni UP")
     game.width(tablero.ancho())
     game.height(tablero.alto())
     game.cellSize(40)
@@ -41,6 +47,7 @@ object juego {
     game.addVisual(jugador)
     game.addVisual(hud)
     self.configurarTeclas()
+    self.mostrarCartel()
     game.onCollideDo(jugador, { algo => algo.impactar(jugador) })
   }
 
@@ -48,7 +55,7 @@ object juego {
     keyboard.up().onPressDo({ self.moverJugador(arriba) })
     keyboard.left().onPressDo({ self.moverJugador(izquierda) })
     keyboard.right().onPressDo({ self.moverJugador(derecha) })
-    keyboard.r().onPressDo({ self.nuevaPartida() })
+    keyboard.enter().onPressDo({ self.presionarEnter() })
   }
 
   method moverJugador(direccion) {
@@ -57,14 +64,37 @@ object juego {
     }
   }
 
+  method presionarEnter() {
+    if (self.estaEnMenu() || self.estaPerdido() || self.estaGanado()) { self.nuevaPartida()
+    }
+  }
+
+method mostrarCartel() {
+    if (!cartelVisible) {
+      game.addVisual(cartel)
+      cartelVisible = true
+    }
+  }
+
+   method ocultarCartel() {
+    if (cartelVisible) {
+      game.removeVisual(cartel)
+      cartelVisible = false
+    }
+  }
+
   // ---------------- Partida y niveles ----------------
+
   method nuevaPartida() {
+    estado = "jugando"
+    mensaje = ""
+    self.ocultarCartel()
     nivelActual = niveles.first()
     jugador.reiniciar()
     self.armarPiso()
     self.iniciarNivel()
   }
-
+  
   method armarPiso() {
     peligrosDelPiso.forEach({ peligro => game.removeVisual(peligro) })
     peligrosDelPiso.clear()
@@ -85,6 +115,7 @@ object juego {
     self.limpiarObstaculos()
     jugador.reaparecer()
     mensaje = ""
+    estado = "jugando"
     enCurso = true
     game.onTick(nivelActual.msEntreApariciones(), "aparecer", { self.agregarObstaculo(nivelActual.nuevoObstaculo()) })
     game.onTick(nivelActual.msDeCaida(), "caer", { obstaculos.copy().forEach({ obstaculo => obstaculo.caer() }) })
@@ -94,8 +125,11 @@ object juego {
   method nivelCompletado() {
     self.pausar()
     if (self.esUltimoNivel()) {
-      self.terminar("¡GANASTE! (R para jugar de nuevo)")
+      estado = "ganado"
+      self.terminar("¡GANASTE!")
+      self.mostrarCartel()
     } else {
+      estado = "transicion"
       nivelActual = self.siguienteNivel()
       mensaje = "¡Nivel superado!"
       game.schedule(1500, { self.iniciarNivel() })
@@ -104,7 +138,9 @@ object juego {
 
   method perder(motivo) {
     self.pausar()
-    self.terminar(motivo + " (R para reintentar)")
+    estado = "perdido"
+    self.terminar(motivo)
+    self.mostrarCartel()
   }
 
   method terminar(texto) {
@@ -146,4 +182,17 @@ object hud {
   method position() = game.at(tablero.columnaCentral(), tablero.filaHud())
   method text() = "Nivel " + juego.nivelActual().numero() + "   Vidas: " + jugador.vidas() + "   " + juego.mensaje()
   method textColor() = "FFFFFFFF"
+}
+
+object cartel {
+  method position() = game.at(1, 1)
+  method image() {
+    if (juego.estaEnMenu()) {
+      return "Inicio.png"
+    } else if (juego.estaPerdido()) {
+      return "gameover.png"
+    } else {
+      return "victoria.png"
+    }
+  }
 }

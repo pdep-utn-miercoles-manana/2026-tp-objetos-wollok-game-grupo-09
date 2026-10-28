@@ -208,3 +208,112 @@
 {"level":"info","message":"🚀 Program executed main.OvniUP on C:\\Users\\sebag\\Proyectos\\facultad\\2026-tp-objetos-wollok-game-grupo-09","ok":true,"timeElapsed":1176,"timestamp":"2026-10-28T18:05:49.558Z"}
 {"level":"info","message":"🚀 Program executed main.OvniUP on C:\\Users\\sebag\\Proyectos\\facultad\\2026-tp-objetos-wollok-game-grupo-09","ok":true,"timeElapsed":1651,"timestamp":"2026-10-28T18:06:19.097Z"}
 {"level":"info","message":"🚀 Program executed main.OvniUP on C:\\Users\\sebag\\Proyectos\\facultad\\2026-tp-objetos-wollok-game-grupo-09","ok":true,"timeElapsed":2689,"timestamp":"2026-10-28T18:06:23.823Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":105,"timestamp":"2026-10-28T21:02:20.389Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":129,"timestamp":"2026-10-28T21:02:20.521Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":103,"timestamp":"2026-10-28T21:02:20.873Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":102,"timestamp":"2026-10-28T21:02:21.058Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":103,"timestamp":"2026-10-28T21:03:44.779Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":124,"timestamp":"2026-10-28T21:03:44.906Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":114,"timestamp":"2026-10-28T21:05:15.213Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":102,"timestamp":"2026-10-28T21:05:16.327Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":109,"timestamp":"2026-10-28T21:05:49.022Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":121,"timestamp":"2026-10-28T21:05:49.526Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":152,"timestamp":"2026-10-28T21:05:49.874Z"}
+{"level":"error","message":"✘ Completions for node Send ([58:4, 58:21] - juego.wlk) failed: Error: [Send]{c0134f} at juego.wlk:58 exhausted all cases without a match [Send]{c0134f} at juego.wlk:58 exhausted all cases without a match","stack":"Error: [Send]{c0134f} at juego.wlk:58 exhausted all cases without a match\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:38:6142\n    at L2 (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:42)\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:2988\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2430:8440\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:37:74872\n    at Ke (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:8527)\n    at It (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6189)\n    at et (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6378)\n    at Immediate._onImmediate (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6142)\n    at process.processImmediate (node:internal/timers:574:21)","timestamp":"2026-10-28T21:05:50.563Z"}
+{"level":"error","message":"✘ Completions for node Send ([58:4, 58:56] - juego.wlk) failed: Error: [Send]{766be2} at juego.wlk:58 exhausted all cases without a match [Send]{766be2} at juego.wlk:58 exhausted all cases without a match","stack":"Error: [Send]{766be2} at juego.wlk:58 exhausted all cases without a match\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:38:6142\n    at L2 (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:42)\n    at Jh (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:1092)\n    at L2 (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:544)\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:2988\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2430:8440\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:37:74872\n    at Ke (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:8527)\n    at It (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6189)\n    at et (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6378)","timestamp":"2026-10-28T21:05:50.563Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":112,"timestamp":"2026-10-28T21:06:01.537Z"}
+{"level":"error","message":"✘ Completions for node Send ([58:34, 58:55] - juego.wlk) failed: Error: [Send]{6755be} at juego.wlk:58 exhausted all cases without a match [Send]{6755be} at juego.wlk:58 exhausted all cases without a match","stack":"Error: [Send]{6755be} at juego.wlk:58 exhausted all cases without a match\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:38:6142\n    at L2 (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:42)\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:2988\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2430:8440\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:37:74872\n    at Ke (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:8527)\n    at It (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6189)\n    at et (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6378)\n    at Immediate._onImmediate (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6142)\n    at process.processImmediate (node:internal/timers:574:21)","timestamp":"2026-10-28T21:06:04.515Z"}
+{"level":"error","message":"✘ Completions for node Return (undefined - juego.wlk) failed: Error: [Return]{90434b} at juego.wlk:-- exhausted all cases without a match [Return]{90434b} at juego.wlk:-- exhausted all cases without a match","stack":"Error: [Return]{90434b} at juego.wlk:-- exhausted all cases without a match\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:38:6142\n    at L2 (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:42)\n    at Jh (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:1092)\n    at L2 (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:544)\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2421:2988\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:2430:8440\n    at c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:37:74872\n    at Ke (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:8527)\n    at It (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6189)\n    at et (c:\\Users\\lihue\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.5.5\\out\\server\\src\\server.js:7:6378)","timestamp":"2026-10-28T21:06:04.515Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":111,"timestamp":"2026-10-28T21:06:20.284Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":116,"timestamp":"2026-10-28T21:06:49.486Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":110,"timestamp":"2026-10-28T21:06:50.125Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":115,"timestamp":"2026-10-28T21:07:35.404Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":116,"timestamp":"2026-10-28T21:08:40.141Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":123,"timestamp":"2026-10-28T21:08:40.430Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":105,"timestamp":"2026-10-28T21:08:43.954Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":112,"timestamp":"2026-10-28T21:08:45.336Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":106,"timestamp":"2026-10-28T21:09:27.789Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":112,"timestamp":"2026-10-28T21:09:27.903Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":101,"timestamp":"2026-10-28T21:09:28.251Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":118,"timestamp":"2026-10-28T21:09:28.918Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":105,"timestamp":"2026-10-28T21:10:03.229Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":118,"timestamp":"2026-10-28T21:10:03.349Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":113,"timestamp":"2026-10-28T21:10:06.761Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":124,"timestamp":"2026-10-28T21:10:41.813Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":131,"timestamp":"2026-10-28T21:10:45.867Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":105,"timestamp":"2026-10-28T21:10:47.411Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":112,"timestamp":"2026-10-28T21:10:47.758Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":104,"timestamp":"2026-10-28T21:10:48.167Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":108,"timestamp":"2026-10-28T21:11:16.348Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":111,"timestamp":"2026-10-28T21:11:16.462Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":103,"timestamp":"2026-10-28T21:11:16.807Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":102,"timestamp":"2026-10-28T21:11:35.354Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":106,"timestamp":"2026-10-28T21:16:42.028Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":149,"timestamp":"2026-10-28T21:16:42.179Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":112,"timestamp":"2026-10-28T21:16:42.681Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":188,"timestamp":"2026-10-28T21:16:42.888Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mmain.OvniUP\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\lihue\\documents\\UTN\\pdep\\2026-tp-objetos-wollok-game-grupo-09\u001b[39m\u001b[23m","ok":true,"timeElapsed":331,"timestamp":"2026-10-28T21:16:45.078Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mmain.OvniUP\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\lihue\\documents\\UTN\\pdep\\2026-tp-objetos-wollok-game-grupo-09\u001b[39m\u001b[23m","ok":true,"timeElapsed":339,"timestamp":"2026-10-28T21:18:00.090Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":186,"timestamp":"2026-10-28T21:22:47.432Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":236,"timestamp":"2026-10-28T21:22:47.670Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":117,"timestamp":"2026-10-28T21:22:47.790Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":252,"timestamp":"2026-10-28T21:22:48.044Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":132,"timestamp":"2026-10-28T21:22:48.177Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":188,"timestamp":"2026-10-28T21:22:48.495Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":303,"timestamp":"2026-10-28T21:22:48.799Z"}
+{"level":"info","message":"⌛ Validating tablero.wlk","timeElapsed":266,"timestamp":"2026-10-28T21:22:49.100Z"}
+{"level":"info","message":"⌛ Validating obstaculos.wlk","timeElapsed":177,"timestamp":"2026-10-28T21:22:49.303Z"}
+{"level":"info","message":"⌛ Validating main.wpgm","timeElapsed":131,"timestamp":"2026-10-28T21:22:50.564Z"}
+{"level":"info","message":"⌛ Validating jugador.wlk","timeElapsed":164,"timestamp":"2026-10-28T21:22:50.960Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":136,"timestamp":"2026-10-28T21:22:51.097Z"}
+{"level":"info","message":"⌛ Validating tablero.wlk","timeElapsed":181,"timestamp":"2026-10-28T21:22:51.278Z"}
+{"level":"info","message":"⌛ Validating obstaculos.wlk","timeElapsed":169,"timestamp":"2026-10-28T21:22:51.447Z"}
+{"level":"info","message":"⌛ Validating main.wpgm","timeElapsed":114,"timestamp":"2026-10-28T21:22:51.562Z"}
+{"level":"info","message":"⌛ Validating jugador.wlk","timeElapsed":192,"timestamp":"2026-10-28T21:22:51.755Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":106,"timestamp":"2026-10-28T21:22:53.864Z"}
+{"level":"info","message":"⌛ Validating tablero.wlk","timeElapsed":106,"timestamp":"2026-10-28T21:22:53.973Z"}
+{"level":"info","message":"⌛ Validating obstaculos.wlk","timeElapsed":134,"timestamp":"2026-10-28T21:22:54.108Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":109,"timestamp":"2026-10-28T21:22:55.578Z"}
+{"level":"info","message":"⌛ Validating tablero.wlk","timeElapsed":124,"timestamp":"2026-10-28T21:22:55.751Z"}
+{"level":"info","message":"⌛ Validating obstaculos.wlk","timeElapsed":124,"timestamp":"2026-10-28T21:22:55.876Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":124,"timestamp":"2026-10-28T21:22:56.623Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":158,"timestamp":"2026-10-28T21:22:56.827Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mmain.OvniUP\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\lihue\\Documents\\UTN\\PdeP\\2026-tp-objetos-wollok-game-grupo-09\u001b[39m\u001b[23m","ok":true,"timeElapsed":357,"timestamp":"2026-10-28T21:23:08.410Z"}
+{"error":["Error: Could not resolve reference to main.OvniUp","  at Environment.getNodeByFQN (C:\\Users\\lihue\\AppData\\Roaming\\npm\\node_modules\\wollok-ts-cli\\node_modules\\wollok-ts\\dist\\model.js:723:19)","  at default (file:///C:/Users/lihue/AppData/Roaming/npm/node_modules/wollok-ts-cli/dist/src/commands/run.js:29:64"],"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mmain.OvniUp\u001b[39m\u001b[23m on \u001b[3m\u001b[34mC:\\Users\\lihue\\Documents\\UTN\\PdeP\\2026-tp-objetos-wollok-game-grupo-09\u001b[39m\u001b[23m","ok":false,"timeElapsed":495,"timestamp":"2026-10-28T21:23:57.941Z"}
+{"error":["Error: Could not resolve reference to main.OvniUp","  at Environment.getNodeByFQN (C:\\Users\\lihue\\AppData\\Roaming\\npm\\node_modules\\wollok-ts-cli\\node_modules\\wollok-ts\\dist\\model.js:723:19)","  at default (file:///C:/Users/lihue/AppData/Roaming/npm/node_modules/wollok-ts-cli/dist/src/commands/run.js:29:64"],"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mmain.OvniUp\u001b[39m\u001b[23m on \u001b[3m\u001b[34mC:\\Users\\lihue\\Documents\\UTN\\PdeP\\2026-tp-objetos-wollok-game-grupo-09\u001b[39m\u001b[23m","ok":false,"timeElapsed":539,"timestamp":"2026-10-28T21:25:53.549Z"}
+{"level":"info","message":"⌛ Validating obstaculos.wlk","timeElapsed":123,"timestamp":"2026-10-28T21:28:30.394Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":130,"timestamp":"2026-10-28T21:30:42.489Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":184,"timestamp":"2026-10-28T21:30:42.676Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":116,"timestamp":"2026-10-28T21:30:42.794Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":136,"timestamp":"2026-10-28T21:30:42.931Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":109,"timestamp":"2026-10-28T21:30:43.040Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":115,"timestamp":"2026-10-28T21:30:43.155Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":165,"timestamp":"2026-10-28T21:30:43.321Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":115,"timestamp":"2026-10-28T21:30:43.436Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":134,"timestamp":"2026-10-28T21:30:43.678Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":105,"timestamp":"2026-10-28T21:30:43.783Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":116,"timestamp":"2026-10-28T21:30:43.900Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":108,"timestamp":"2026-10-28T21:30:44.008Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":104,"timestamp":"2026-10-28T21:30:44.212Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":128,"timestamp":"2026-10-28T21:30:44.433Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":140,"timestamp":"2026-10-28T21:30:44.659Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":105,"timestamp":"2026-10-28T21:30:45.056Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":109,"timestamp":"2026-10-28T21:30:45.778Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":193,"timestamp":"2026-10-28T21:30:45.972Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":106,"timestamp":"2026-10-28T21:30:46.355Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":102,"timestamp":"2026-10-28T21:30:47.110Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mmain.OvniUP\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\lihue\\Documents\\UTN\\PdeP\\2026-tp-objetos-wollok-game-grupo-09\u001b[39m\u001b[23m","ok":true,"timeElapsed":350,"timestamp":"2026-10-28T21:31:51.285Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mmain.OvniUP\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\lihue\\Documents\\UTN\\PdeP\\2026-tp-objetos-wollok-game-grupo-09\u001b[39m\u001b[23m","ok":true,"timeElapsed":467,"timestamp":"2026-10-28T21:34:51.904Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":157,"timestamp":"2026-10-28T21:45:22.752Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":139,"timestamp":"2026-10-28T21:45:22.891Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":125,"timestamp":"2026-10-28T21:45:23.017Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":111,"timestamp":"2026-10-28T21:45:23.155Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":108,"timestamp":"2026-10-28T21:45:23.264Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":126,"timestamp":"2026-10-28T21:45:23.392Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":101,"timestamp":"2026-10-28T21:45:25.214Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":140,"timestamp":"2026-10-28T21:45:25.639Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":109,"timestamp":"2026-10-28T21:45:25.781Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":102,"timestamp":"2026-10-28T21:45:27.019Z"}
+{"exitCode":"SIGINT","level":"info","message":"👾 Game executed main.OvniUP on c:\\Users\\lihue\\Documents\\UTN\\PdeP\\2026-tp-objetos-wollok-game-grupo-09","timeElapsed":642876,"timestamp":"2026-10-28T21:45:34.314Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mmain.OvniUP\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\lihue\\Documents\\UTN\\PdeP\\2026-tp-objetos-wollok-game-grupo-09\u001b[39m\u001b[23m","ok":true,"timeElapsed":346,"timestamp":"2026-10-28T21:45:43.543Z"}
+{"exitCode":"SIGINT","level":"info","message":"👾 Game executed main.OvniUP on c:\\Users\\lihue\\Documents\\UTN\\PdeP\\2026-tp-objetos-wollok-game-grupo-09","timeElapsed":39667,"timestamp":"2026-10-28T21:46:22.864Z"}
