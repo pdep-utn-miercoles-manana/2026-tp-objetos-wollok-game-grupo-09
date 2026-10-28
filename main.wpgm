@@ -1,0 +1,8 @@
+import wollok.game.*
+import juego.*
+
+program OvniUP {
+  juego.configurar()
+  juego.nuevaPartida()
+  game.start()
+}
