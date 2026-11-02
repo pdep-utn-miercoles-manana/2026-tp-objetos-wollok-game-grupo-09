@@ -8,6 +8,7 @@ class Nivel {
   const property msEntreApariciones   // cada cuánto aparece un obstáculo
   const property msDeCaida            // cada cuánto bajan una casilla
   const fabricas                      // qué obstáculos pueden aparecer (repetir = más probable)
+  const property fondo                // imagen de fondo: cuanto más alto el nivel, más lejos se llega
 
   method nuevoObstaculo() = fabricas.anyOne().crear(tablero.posicionAlAzarArriba())
 }
@@ -18,11 +19,14 @@ object juego {
 
   const niveles = [
     new Nivel(numero = 1, msEntreApariciones = 900, msDeCaida = 450,
-              fabricas = [rocas, rocas, rocas, globos, escudos]),
+              fabricas = [rocas, rocas, rocas, globos, escudos],
+              fondo = "fondo_cielo.png"),
     new Nivel(numero = 2, msEntreApariciones = 700, msDeCaida = 350,
-              fabricas = [rocas, rocas, rocas, nubes, nubes, globos, escudos]),
+              fabricas = [rocas, rocas, rocas, nubes, nubes, globos, escudos],
+              fondo = "fondo_estrellas.png"),
     new Nivel(numero = 3, msEntreApariciones = 500, msDeCaida = 250,
-              fabricas = [rocas, rocas, yunques, yunques, nubes, nubes, globos, escudos])
+              fabricas = [rocas, rocas, yunques, yunques, nubes, nubes, globos, escudos],
+              fondo = "fondo_galaxia.png")
   ]
 
   var property nivelActual = niveles.first()
@@ -43,7 +47,7 @@ object juego {
     game.width(tablero.ancho())
     game.height(tablero.alto())
     game.cellSize(40)
-    game.boardGround("fondo.png")
+    self.cambiarANivel(niveles.first())
     game.addVisual(jugador)
     game.addVisual(hud)
     self.configurarTeclas()
@@ -65,8 +69,18 @@ object juego {
   }
 
   method presionarEnter() {
-    if (self.estaEnMenu() || self.estaPerdido() || self.estaGanado()) { self.nuevaPartida()
+    if (self.estaGanado()) {
+      self.volverAlMenu()
+    } else if (self.estaEnMenu() || self.estaPerdido()) {
+      self.nuevaPartida()
     }
+  }
+
+  method volverAlMenu() {
+    estado = "menu"
+    mensaje = ""
+    self.cambiarANivel(niveles.first())
+    jugador.reiniciar()
   }
 
 method mostrarCartel() {
@@ -89,7 +103,7 @@ method mostrarCartel() {
     estado = "jugando"
     mensaje = ""
     self.ocultarCartel()
-    nivelActual = niveles.first()
+    self.cambiarANivel(niveles.first())
     jugador.reiniciar()
     self.armarPiso()
     self.iniciarNivel()
@@ -108,6 +122,11 @@ method mostrarCartel() {
   method peligroParaColumna(x) {
     const posicion = game.at(x, tablero.filaPiso())
     return if (x % 4 == 1) new Bomba(position = posicion) else new Pinchos(position = posicion)
+  }
+
+  method cambiarANivel(nivel) {
+    nivelActual = nivel
+    game.boardGround(nivel.fondo())
   }
 
   method iniciarNivel() {
@@ -130,7 +149,7 @@ method mostrarCartel() {
       self.mostrarCartel()
     } else {
       estado = "transicion"
-      nivelActual = self.siguienteNivel()
+      self.cambiarANivel(self.siguienteNivel())
       mensaje = "¡Nivel superado!"
       game.schedule(1500, { self.iniciarNivel() })
     }

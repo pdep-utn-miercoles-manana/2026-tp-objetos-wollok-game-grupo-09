@@ -21,8 +21,8 @@ La gravedad te baja una casilla cada 1,5 segundos.
 | Pinchos en el piso | Perdés una vida y volvés a empezar desde abajo |
 | Bomba en el piso | Explota y perdés la partida |
 
-Nivel 1 = rocas, globos y escudos -> 
-Nivel 2 = se suman las nubes y todo cae más rápido ->
-Nivel 3 = se suman los yunques, y es el más rápido.
+Nivel 1 (cielo) = rocas, globos y escudos -> 
+Nivel 2 (estrellas) = se suman las nubes y todo cae más rápido ->
+Nivel 3 (galaxia) = se suman los yunques, y es el más rápido.
 
 
