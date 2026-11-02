@@ -132,6 +132,7 @@ method mostrarCartel() {
   method iniciarNivel() {
     self.detenerEventos()
     self.limpiarObstaculos()
+    self.ocultarCartel()
     jugador.reaparecer()
     mensaje = ""
     estado = "jugando"
@@ -151,6 +152,7 @@ method mostrarCartel() {
       estado = "transicion"
       self.cambiarANivel(self.siguienteNivel())
       mensaje = "¡Nivel superado!"
+      self.mostrarCartel()
       game.schedule(1500, { self.iniciarNivel() })
     }
   }
@@ -204,14 +206,31 @@ object hud {
 }
 
 object cartel {
-  method position() = game.at(1, 1)
+  method position() {
+    if (juego.estaPerdido()) {
+    return game.at(1, 1)
+    } else if (juego.estaGanado()) {
+    return game.at(1, 1)
+    } else if (juego.nivelActual().numero() == 2){
+      return game.at (2,6)
+    } else if (juego.nivelActual().numero() == 3){
+      return game.at (2,6)
+    } else {
+      return game.at (1,1)
+    }
+  }
+
   method image() {
     if (juego.estaEnMenu()) {
       return "Inicio.png"
     } else if (juego.estaPerdido()) {
       return "gameover.png"
-    } else {
+    } else if (juego.estaGanado()) {
       return "victoria.png"
+    } else if (juego.nivelActual().numero() == 2) {
+      return "nivel2.png"
+    } else  {
+      return "nivel3.png"
     }
   }
 }
