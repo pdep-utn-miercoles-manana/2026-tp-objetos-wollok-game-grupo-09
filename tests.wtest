@@ -1,0 +1,167 @@
+import wollok.game.*
+import tablero.*
+import jugador.*
+import obstaculos.*
+import juego.*
+
+describe "Movimiento del jugador" {
+
+  method initialize() {
+    jugador.reiniciar()
+    jugador.position(game.at(5, 5))
+  }
+
+  test "al moverse hacia arriba sube una casilla" {
+    jugador.mover(arriba)
+    assert.equals(game.at(5, 6), jugador.position())
+  }
+
+  test "no puede salirse del tablero por los costados" {
+    jugador.position(game.at(0, 5))
+    jugador.mover(izquierda)
+    assert.equals(game.at(0, 5), jugador.position())
+  }
+
+  test "no puede bajar más allá del piso" {
+    jugador.bajar(20)
+    assert.equals(tablero.filaPiso(), jugador.position().y())
+  }
+
+  test "la gravedad lo hace bajar una casilla" {
+    jugador.caer()
+    assert.equals(game.at(5, 4), jugador.position())
+  }
+
+  test "si está paralizado no se puede mover" {
+    jugador.paralizar(2000)
+    jugador.mover(arriba)
+    assert.equals(game.at(5, 5), jugador.position())
+  }
+
+  test "al recuperarse de la parálisis vuelve a moverse" {
+    jugador.paralizar(2000)
+    jugador.estado().recuperarse(jugador)
+    jugador.mover(arriba)
+    assert.equals(game.at(5, 6), jugador.position())
+  }
+}
+
+describe "Obstáculos que caen (polimorfismo)" {
+
+  method initialize() {
+    juego.nuevaPartida()
+    jugador.position(game.at(5, 8))
+  }
+
+  test "la roca empuja al jugador 2 casillas hacia abajo" {
+    new Roca(position = game.at(5, 8)).impactar(jugador)
+    assert.equals(game.at(5, 6), jugador.position())
+  }
+
+  test "el yunque empuja al jugador 4 casillas hacia abajo" {
+    new Yunque(position = game.at(5, 8)).impactar(jugador)
+    assert.equals(game.at(5, 4), jugador.position())
+  }
+
+  test "el globo impulsa al jugador 3 casillas hacia arriba" {
+    new Globo(position = game.at(5, 8)).impactar(jugador)
+    assert.equals(game.at(5, 11), jugador.position())
+  }
+
+  test "la nube paraliza al jugador" {
+    new Nube(position = game.at(5, 8)).impactar(jugador)
+    assert.equals(paralizado, jugador.estado())
+  }
+
+  test "con escudo, la roca no lo empuja y el escudo se gasta" {
+    new Escudo(position = game.at(5, 8)).impactar(jugador)
+    new Roca(position = game.at(5, 8)).impactar(jugador)
+    assert.equals(game.at(5, 8), jugador.position())
+    assert.equals(normal, jugador.estado())
+  }
+
+  test "el yunque atraviesa el escudo" {
+    jugador.proteger()
+    new Yunque(position = game.at(5, 8)).impactar(jugador)
+    assert.equals(game.at(5, 4), jugador.position())
+  }
+
+  test "al impactar, el obstáculo desaparece del juego" {
+    const roca = new Roca(position = game.at(5, 8))
+    juego.agregarObstaculo(roca)
+    roca.impactar(jugador)
+    assert.notThat(juego.obstaculos().contains(roca))
+  }
+
+  test "un obstáculo que cae baja una casilla" {
+    const roca = new Roca(position = game.at(3, 10))
+    juego.agregarObstaculo(roca)
+    roca.caer()
+    assert.equals(game.at(3, 9), roca.position())
+  }
+
+  test "un obstáculo que llega al piso desaparece" {
+    const roca = new Roca(position = game.at(3, 1))
+    juego.agregarObstaculo(roca)
+    roca.caer()
+    assert.notThat(juego.obstaculos().contains(roca))
+  }
+}
+
+describe "Peligros del piso" {
+
+  method initialize() {
+    juego.nuevaPartida()
+  }
+
+  test "los pinchos le quitan una vida y lo devuelven al inicio" {
+    jugador.position(game.at(3, 0))
+    new Pinchos(position = game.at(3, 0)).impactar(jugador)
+    assert.equals(2, jugador.vidas())
+    assert.equals(tablero.posicionInicial(), jugador.position())
+  }
+
+  test "si se queda sin vidas pierde la partida" {
+    jugador.vidas(1)
+    new Pinchos(position = game.at(3, 0)).impactar(jugador)
+    assert.notThat(juego.enCurso())
+  }
+
+  test "la bomba hace perder la partida de inmediato" {
+    new Bomba(position = game.at(1, 0)).impactar(jugador)
+    assert.that(jugador.sinVidas())
+    assert.notThat(juego.enCurso())
+  }
+}
+
+describe "Niveles" {
+
+  method initialize() {
+    juego.nuevaPartida()
+  }
+
+  test "al llegar a la meta pasa al siguiente nivel" {
+    jugador.position(game.at(5, tablero.filaMeta() - 1))
+    jugador.mover(arriba)
+    assert.equals(2, juego.nivelActual().numero())
+  }
+
+  test "al pasar de nivel se limpian los obstáculos" {
+    juego.agregarObstaculo(new Roca(position = game.at(2, 10)))
+    juego.nivelCompletado()
+    assert.that(juego.obstaculos().isEmpty())
+  }
+
+  test "si completa el último nivel gana y termina la partida" {
+    juego.nivelCompletado()
+    juego.nivelCompletado()
+    juego.nivelCompletado()
+    assert.equals(3, juego.nivelActual().numero())
+    assert.notThat(juego.enCurso())
+  }
+
+  test "un nivel crea obstáculos en la fila de arriba" {
+    const obstaculo = juego.nivelActual().nuevoObstaculo()
+    assert.equals(tablero.filaMeta(), obstaculo.position().y())
+  }
+}

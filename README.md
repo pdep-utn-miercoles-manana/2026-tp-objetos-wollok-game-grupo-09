@@ -25,4 +25,6 @@ Nivel 1 (cielo) = rocas, globos y escudos ->
 Nivel 2 (estrellas) = se suman las nubes y todo cae más rápido ->
 Nivel 3 (galaxia) = se suman los yunques, y es el más rápido.
 
+## Iniciar juego
 
+wollok run main.OvniUP

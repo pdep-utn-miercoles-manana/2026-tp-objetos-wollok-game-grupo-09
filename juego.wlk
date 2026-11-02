@@ -14,17 +14,17 @@ class Nivel {
 }
 
 object juego {
-  const msGravedad = 1500
+  const msGravedad = 500
   const eventos = ["aparecer", "caer", "gravedad"]
 
   const niveles = [
-    new Nivel(numero = 1, msEntreApariciones = 900, msDeCaida = 450,
+    new Nivel(numero = 1, msEntreApariciones = 700, msDeCaida = 400,
               fabricas = [rocas, rocas, rocas, globos, escudos],
               fondo = "fondo_cielo.png"),
-    new Nivel(numero = 2, msEntreApariciones = 700, msDeCaida = 350,
+    new Nivel(numero = 2, msEntreApariciones = 500, msDeCaida = 200,
               fabricas = [rocas, rocas, rocas, nubes, nubes, globos, escudos],
               fondo = "fondo_estrellas.png"),
-    new Nivel(numero = 3, msEntreApariciones = 500, msDeCaida = 250,
+    new Nivel(numero = 3, msEntreApariciones = 200, msDeCaida = 100,
               fabricas = [rocas, rocas, yunques, yunques, nubes, nubes, globos, escudos],
               fondo = "fondo_galaxia.png")
   ]
