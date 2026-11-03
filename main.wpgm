@@ -2,6 +2,9 @@ import wollok.game.*
 import juego.*
 
 program OvniUP {
+  const musica = game.sound("technological_antarctica.ogg")
+  musica.shouldLoop(true)
+  game.schedule(500, {musica.play()})
   juego.configurar()
   game.start()
 }

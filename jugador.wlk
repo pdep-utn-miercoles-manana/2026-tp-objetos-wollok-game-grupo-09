@@ -39,7 +39,9 @@ object jugador {
 
   method perderVida() {
     vidas = 0.max(vidas - 1)
+    game.sound("impacto-pinchos.wav").play()
     if (self.sinVidas()) {
+      game.sound("boom.wav").play()
       juego.perder("¡Te quedaste sin vidas!")
     } else {
       self.reaparecer()
@@ -48,6 +50,7 @@ object jugador {
 
   method perderTodasLasVidas() {
     vidas = 0
+    game.sound("boom.wav").play()
     juego.perder("¡BOOM!")
   }
 

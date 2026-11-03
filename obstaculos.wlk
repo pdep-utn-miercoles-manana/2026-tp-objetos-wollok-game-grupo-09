@@ -14,7 +14,10 @@ class Obstaculo {
     juego.quitarObstaculo(self)
     efectos.destello(position, self.imagenImpacto())
     self.afectar(unJugador)
+    self.reproducirSonido()
   }
+
+  method reproducirSonido() { }
 
   method caer() {
     position = position.down(1)
@@ -29,6 +32,7 @@ class Roca inherits Obstaculo {
   override method image() = "roca.png"
   override method imagenImpacto() = "impacto.png"
   override method afectar(unJugador) { unJugador.recibirEmpuje(2) }
+  override method reproducirSonido() { game.sound("impacto-empuje.wav").play() }
 }
 
 // atraviesa el escudo: baja 4 casillas sí o sí
@@ -36,6 +40,7 @@ class Yunque inherits Obstaculo {
   override method image() = "yunque.png"
   override method imagenImpacto() = "impacto.png"
   override method afectar(unJugador) { unJugador.bajar(4) }
+  override method reproducirSonido() { game.sound("impacto-empuje.wav").play() }
 }
 
 // Lo paraliza unos segundos: no se puede mover, pero la gravedad sigue
@@ -43,6 +48,7 @@ class Nube inherits Obstaculo {
   override method image() = "nube.png"
   override method imagenImpacto() = "impacto.png"
   override method afectar(unJugador) { unJugador.paralizar(2000) }
+  override method reproducirSonido() { game.sound("aturdimiento.wav").play() }
 }
 
 //lo impulsa 3 casillas hacia arriba
@@ -50,6 +56,7 @@ class Globo inherits Obstaculo {
   override method image() = "globo.png"
   override method imagenImpacto() = "brillo.png"
   override method afectar(unJugador) { unJugador.subir(3) }
+  override method reproducirSonido() { game.sound("salto-globo.wav").play() }
 }
 
 //lo protege del próximo empuje
@@ -57,6 +64,7 @@ class Escudo inherits Obstaculo {
   override method image() = "escudo.png"
   override method imagenImpacto() = "brillo.png"
   override method afectar(unJugador) { unJugador.proteger() }
+  override method reproducirSonido() { game.sound("escudo.wav").play() }
 }
 
 // Fábricas: crean un obstaculo de cada tipo
