@@ -165,3 +165,21 @@ describe "Niveles" {
     assert.equals(tablero.filaMeta(), obstaculo.position().y())
   }
 }
+
+describe "Barra superior" {
+
+  method initialize() {
+    juego.nuevaPartida()
+  }
+
+  test "los corazones se vacían según las vidas que perdió el jugador" {
+    jugador.vidas(2)
+    const imagenes = hud.corazones().map({ corazon => corazon.image() })
+    assert.equals(["hud_corazon.png", "hud_corazon.png", "hud_corazon_vacio.png"], imagenes)
+  }
+
+  test "la insignia muestra el nivel actual" {
+    juego.nivelActual(juego.siguienteNivel())
+    assert.equals("hud_nivel2.png", nivelHud.image())
+  }
+}

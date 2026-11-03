@@ -49,7 +49,7 @@ object juego {
     game.cellSize(40)
     self.cambiarANivel(niveles.first())
     game.addVisual(jugador)
-    game.addVisual(hud)
+    hud.mostrar()
     self.configurarTeclas()
     self.mostrarCartel()
     game.onCollideDo(jugador, { algo => algo.impactar(jugador) })
@@ -199,10 +199,38 @@ method mostrarCartel() {
   }
 }
 
+// ---------------- Barra superior ----------------
 object hud {
+  const property corazones = [new CorazonHud(indice = 0), new CorazonHud(indice = 1), new CorazonHud(indice = 2)]
+
+  method mostrar() {
+    game.addVisual(barraHud)
+    game.addVisual(nivelHud)
+    corazones.forEach({ corazon => game.addVisual(corazon) })
+    game.addVisual(mensajeHud)
+  }
+}
+
+object barraHud {
+  method position() = game.at(0, tablero.filaHud())
+  method image() = "hud_barra.png"
+}
+
+object nivelHud {
+  method position() = game.at(0, tablero.filaHud())
+  method image() = "hud_nivel" + juego.nivelActual().numero() + ".png"
+}
+
+class CorazonHud {
+  const indice   // 0, 1, 2: está lleno si al jugador le quedan más vidas que su índice
+  method position() = game.at(tablero.ancho() - 3 + indice, tablero.filaHud())
+  method image() = if (jugador.vidas() > indice) "hud_corazon.png" else "hud_corazon_vacio.png"
+}
+
+object mensajeHud {
   method position() = game.at(tablero.columnaCentral(), tablero.filaHud())
-  method text() = "Nivel " + juego.nivelActual().numero() + "   Vidas: " + jugador.vidas() + "   " + juego.mensaje()
-  method textColor() = "FFFFFFFF"
+  method text() = juego.mensaje()
+  method textColor() = "FFD84AFF"
 }
 
 object cartel {
