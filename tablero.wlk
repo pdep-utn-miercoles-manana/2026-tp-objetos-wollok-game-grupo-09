@@ -21,8 +21,18 @@ object tablero {
 
   method llegoAlPiso(posicion) = posicion.y() <= self.filaPiso()
   method llegoALaMeta(posicion) = posicion.y() >= self.filaMeta()
+
+  // se fue por la derecha o bajó hasta el piso
+  method salioDelAreaDeJuego(posicion) = posicion.x() >= ancho || posicion.y() <= self.filaPiso()
+
+  // a unas casillas al azar del borde izquierdo: tarda un rato en volver a entrar
+  method posicionAlAzarIzquierda() = game.at(
+    (-12).randomUpTo(-2).truncate(0),
+    (self.filaPiso() + 1).randomUpTo(self.filaMeta()).truncate(0)
+  )
 }
 
-object arriba    { method siguiente(posicion) = posicion.up(1) }
-object izquierda { method siguiente(posicion) = posicion.left(1) }
-object derecha   { method siguiente(posicion) = posicion.right(1) }
+object arriba        { method siguiente(posicion) = posicion.up(1) }
+object izquierda     { method siguiente(posicion) = posicion.left(1) }
+object derecha       { method siguiente(posicion) = posicion.right(1) }
+object diagonalAbajo { method siguiente(posicion) = posicion.right(1).down(1) }

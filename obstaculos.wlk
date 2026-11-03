@@ -1,15 +1,18 @@
 import wollok.game.*
 import tablero.*
 import juego.*
+import decorado.*
 
 class Obstaculo {
   var property position
 
   method image()                  
   method afectar(unJugador)       
+  method imagenImpacto()          // el destello que deja al golpear
 
   method impactar(unJugador) {
     juego.quitarObstaculo(self)
+    efectos.destello(position, self.imagenImpacto())
     self.afectar(unJugador)
   }
 
@@ -24,30 +27,35 @@ class Obstaculo {
 // Empuja 2 casillas hacia abajo (el escudo lo frena)
 class Roca inherits Obstaculo {
   override method image() = "roca.png"
+  override method imagenImpacto() = "impacto.png"
   override method afectar(unJugador) { unJugador.recibirEmpuje(2) }
 }
 
 // atraviesa el escudo: baja 4 casillas sí o sí
 class Yunque inherits Obstaculo {
   override method image() = "yunque.png"
+  override method imagenImpacto() = "impacto.png"
   override method afectar(unJugador) { unJugador.bajar(4) }
 }
 
 // Lo paraliza unos segundos: no se puede mover, pero la gravedad sigue
 class Nube inherits Obstaculo {
   override method image() = "nube.png"
+  override method imagenImpacto() = "impacto.png"
   override method afectar(unJugador) { unJugador.paralizar(2000) }
 }
 
 //lo impulsa 3 casillas hacia arriba
 class Globo inherits Obstaculo {
   override method image() = "globo.png"
+  override method imagenImpacto() = "brillo.png"
   override method afectar(unJugador) { unJugador.subir(3) }
 }
 
 //lo protege del próximo empuje
 class Escudo inherits Obstaculo {
   override method image() = "escudo.png"
+  override method imagenImpacto() = "brillo.png"
   override method afectar(unJugador) { unJugador.proteger() }
 }
 

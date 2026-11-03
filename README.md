@@ -7,9 +7,9 @@ https://docs.google.com/document/d/1ngXDE2ez-ztIsfwtkWnmAS3YSEobYEeRV0DU9r4TmRo/
 |---|---|
 | ↑ | Subir |
 | ← → | Moverse a los costados |
-| R | Nueva partida |
+| Enter | Empezar / nueva partida (en el game over y en la victoria vuelve al menú) |
 
-La gravedad te baja una casilla cada 1,5 segundos.
+La gravedad te baja una casilla cada medio segundo.
 
 | Obstáculo | Efecto |
 |---|---|
@@ -31,7 +31,7 @@ wollok run main.OvniUP
 
 ## Diagrama de Clases
 ```
-[Obstaculo|position|impactar(j);caer();image();afectar(j)]^-[Roca]
+[Obstaculo|position|impactar(j);caer();image();afectar(j);imagenImpacto()]^-[Roca]
 [Obstaculo]^-[Yunque]
 [Obstaculo]^-[Nube]
 [Obstaculo]^-[Globo]
@@ -39,6 +39,13 @@ wollok run main.OvniUP
 [≪interface≫;Impactable|impactar(jugador)]^-.-[Obstaculo]
 [≪interface≫;Impactable]^-.-[Pinchos|position|impactar(j)]
 [≪interface≫;Impactable]^-.-[Bomba|position;exploto|impactar(j)]
+[≪interface≫;Impactable]^-.-[Decoracion|position|avanzar();image();impactar(j)]
+[≪interface≫;Impactable]^-.-[Destello|position;image|impactar(j)]
+[Decoracion]->[≪interface≫;Decorado|image();siguiente(posicion)]
+[≪interface≫;Decorado]^-.-[≪object≫;pajaros]
+[≪interface≫;Decorado]^-.-[≪object≫;estrellasFugaces]
+[≪interface≫;Decorado]^-.-[≪object≫;cometas]
+[≪object≫;efectos|destello(posicion,imagen)]->[Destello]
 
 
 [≪object≫;jugador|position;vidas;estado|mover(dir);subir(n);bajar(n);recibirEmpuje(n);proteger();paralizar(ms);perderVida()]->[≪interface≫;EstadoJugador|image();puedeMoverse();recibirEmpuje(j,n);recuperarse(j)]
@@ -47,8 +54,9 @@ wollok run main.OvniUP
 [≪interface≫;EstadoJugador]^-.-[≪object≫;paralizado]
 
 
-[≪object≫;juego|nivelActual;obstaculos;enCurso;peligrosDelPiso|nuevaPartida();iniciarNivel();nivelCompletado();perder(m)]->[Nivel|numero;msEntreApariciones;msDeCaida;fabricas;fondo|nuevoObstaculo()]
+[≪object≫;juego|nivelActual;obstaculos;enCurso;peligrosDelPiso;decoraciones|nuevaPartida();iniciarNivel();nivelCompletado();perder(m)]->[Nivel|numero;msEntreApariciones;msDeCaida;fabricas;fondo;decorado|nuevoObstaculo()]
 [Nivel]->[≪interface≫;Fabrica|crear(posicion)]
+[Nivel]->[≪interface≫;Decorado]
 [≪interface≫;Fabrica]^-.-[≪object≫;rocas]
 [≪interface≫;Fabrica]^-.-[≪object≫;yunques]
 [≪interface≫;Fabrica]^-.-[≪object≫;nubes]

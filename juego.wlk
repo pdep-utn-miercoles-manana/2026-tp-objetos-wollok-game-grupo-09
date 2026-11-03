@@ -2,6 +2,7 @@ import wollok.game.*
 import tablero.*
 import jugador.*
 import obstaculos.*
+import decorado.*
 
 class Nivel {
   const property numero
@@ -9,29 +10,36 @@ class Nivel {
   const property msDeCaida            // cada cuánto bajan una casilla
   const fabricas                      // qué obstáculos pueden aparecer (repetir = más probable)
   const property fondo                // imagen de fondo: cuanto más alto el nivel, más lejos se llega
+  const property decorado             // lo que cruza el fondo mientras se juega
 
   method nuevoObstaculo() = fabricas.anyOne().crear(tablero.posicionAlAzarArriba())
 }
 
 object juego {
   const msGravedad = 500
-  const eventos = ["aparecer", "caer", "gravedad"]
+  const msDecorado = 700
+  const msAntesDelCartel = 800       // deja ver la explosión antes del game over
+  const eventos = ["aparecer", "caer", "gravedad", "decorado"]
 
   const niveles = [
     new Nivel(numero = 1, msEntreApariciones = 700, msDeCaida = 400,
               fabricas = [rocas, rocas, rocas, globos, escudos],
-              fondo = "fondo_cielo.png"),
+              fondo = "fondo_cielo.png", decorado = pajaros),
     new Nivel(numero = 2, msEntreApariciones = 500, msDeCaida = 200,
               fabricas = [rocas, rocas, rocas, nubes, nubes, globos, escudos],
-              fondo = "fondo_estrellas.png"),
+              fondo = "fondo_estrellas.png", decorado = estrellasFugaces),
     new Nivel(numero = 3, msEntreApariciones = 200, msDeCaida = 100,
               fabricas = [rocas, rocas, yunques, yunques, nubes, nubes, globos, escudos],
-              fondo = "fondo_galaxia.png")
+              fondo = "fondo_galaxia.png", decorado = cometas)
   ]
 
   var property nivelActual = niveles.first()
   const property obstaculos = []
   const peligrosDelPiso = []
+  const decoraciones = [
+    new Decoracion(position = game.at(2, 10)),
+    new Decoracion(position = game.at(-8, 5))   // arranca afuera: entra más tarde
+  ]
   var property enCurso = false
   var property mensaje = ""
   var estado = "menu"
@@ -48,6 +56,7 @@ object juego {
     game.height(tablero.alto())
     game.cellSize(40)
     self.cambiarANivel(niveles.first())
+    decoraciones.forEach({ decoracion => game.addVisual(decoracion) })   // antes que el jugador: quedan detrás
     game.addVisual(jugador)
     hud.mostrar()
     self.configurarTeclas()
@@ -140,6 +149,7 @@ method mostrarCartel() {
     game.onTick(nivelActual.msEntreApariciones(), "aparecer", { self.agregarObstaculo(nivelActual.nuevoObstaculo()) })
     game.onTick(nivelActual.msDeCaida(), "caer", { obstaculos.copy().forEach({ obstaculo => obstaculo.caer() }) })
     game.onTick(msGravedad, "gravedad", { jugador.caer() })
+    game.onTick(msDecorado, "decorado", { decoraciones.forEach({ decoracion => decoracion.avanzar() }) })
   }
 
   method nivelCompletado() {
@@ -161,7 +171,7 @@ method mostrarCartel() {
     self.pausar()
     estado = "perdido"
     self.terminar(motivo)
-    self.mostrarCartel()
+    game.schedule(msAntesDelCartel, { if (self.estaPerdido()) self.mostrarCartel() })
   }
 
   method terminar(texto) {

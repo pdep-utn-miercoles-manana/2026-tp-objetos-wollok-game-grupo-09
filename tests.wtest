@@ -3,6 +3,7 @@ import tablero.*
 import jugador.*
 import obstaculos.*
 import juego.*
+import decorado.*
 
 describe "Movimiento del jugador" {
 
@@ -181,5 +182,61 @@ describe "Barra superior" {
   test "la insignia muestra el nivel actual" {
     juego.nivelActual(juego.siguienteNivel())
     assert.equals("hud_nivel2.png", nivelHud.image())
+  }
+}
+describe "Decorado y efectos" {
+
+  method initialize() {
+    juego.nuevaPartida()
+    jugador.position(game.at(5, 8))
+  }
+
+  test "una decoración que toca al jugador no lo afecta" {
+    new Decoracion(position = game.at(5, 8)).impactar(jugador)
+    assert.equals(game.at(5, 8), jugador.position())
+    assert.equals(3, jugador.vidas())
+  }
+
+  test "en el cielo la decoración avanza hacia la derecha" {
+    const decoracion = new Decoracion(position = game.at(3, 6))
+    decoracion.avanzar()
+    assert.equals(game.at(4, 6), decoracion.position())
+  }
+
+  test "las estrellas fugaces avanzan en diagonal hacia abajo" {
+    juego.nivelActual(juego.siguienteNivel())
+    const decoracion = new Decoracion(position = game.at(3, 6))
+    decoracion.avanzar()
+    assert.equals(game.at(4, 5), decoracion.position())
+  }
+
+  test "al salir de la pantalla la decoración espera afuera, a la izquierda" {
+    const decoracion = new Decoracion(position = game.at(tablero.ancho() - 1, 6))
+    decoracion.avanzar()
+    assert.that(decoracion.position().x() < 0)
+    assert.that(decoracion.position().y().between(tablero.filaPiso() + 1, tablero.filaMeta() - 1))
+  }
+
+  test "mientras espera afuera, la decoración se acerca sin reaparecer" {
+    const decoracion = new Decoracion(position = game.at(-5, 6))
+    decoracion.avanzar()
+    assert.equals(game.at(-4, 6), decoracion.position())
+  }
+
+  test "la imagen de la decoración cambia según el nivel" {
+    const decoracion = new Decoracion(position = game.at(3, 6))
+    juego.nivelActual(juego.siguienteNivel())
+    assert.equals("estrella_fugaz.png", decoracion.image())
+  }
+
+  test "los obstáculos que bajan dejan polvo y las ayudas dejan brillo" {
+    assert.equals("impacto.png", new Roca(position = game.at(0, 0)).imagenImpacto())
+    assert.equals("brillo.png", new Globo(position = game.at(0, 0)).imagenImpacto())
+  }
+
+  test "al perder, la partida se detiene en el acto" {
+    juego.perder("¡BOOM!")
+    assert.that(juego.estaPerdido())
+    assert.notThat(juego.enCurso())
   }
 }
