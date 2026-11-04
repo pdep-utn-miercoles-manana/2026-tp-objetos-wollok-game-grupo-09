@@ -42,12 +42,13 @@ object juego {
   ]
   var property enCurso = false
   var property mensaje = ""
-  var estado = "menu"
+  var estado = "cargando"
   var cartelVisible = false
 
   method estaEnMenu() = estado == "menu"
   method estaPerdido() = estado == "perdido"
   method estaGanado() = estado == "ganado"
+  method estaCargando() = estado == "cargando"
 
   // ---------------- Configuración ----------------
   method configurar() {
@@ -60,7 +61,8 @@ object juego {
     game.addVisual(jugador)
     hud.mostrar()
     self.configurarTeclas()
-    self.mostrarCartel()
+    game.addVisual(cartelCarga)
+    game.schedule(5000, { self.finalizarCarga() })
     game.onCollideDo(jugador, { algo => algo.impactar(jugador) })
   }
 
@@ -105,6 +107,15 @@ method mostrarCartel() {
       cartelVisible = false
     }
   }
+method finalizarCarga() {
+  if (self.estaCargando()) {
+    estado = "menu"
+    game.removeVisual(cartelCarga)
+    self.mostrarCartel()
+  }
+}
+
+
 
   // ---------------- Partida y niveles ----------------
 
@@ -243,18 +254,25 @@ object mensajeHud {
   method textColor() = "FFD84AFF"
 }
 
+object cartelCarga {
+  method position() = game.at(0 , 0)
+  method image() = "Port_OvniUp.png"
+}
+
 object cartel {
   method position() {
-    if (juego.estaPerdido()) {
+    if (juego.estaEnMenu()) {
     return game.at(1, 1)
-    } else if (juego.estaGanado()) {
+  } else if (juego.estaPerdido()) {
     return game.at(1, 1)
-    } else if (juego.nivelActual().numero() == 2){
-      return game.at (2,6)
-    } else if (juego.nivelActual().numero() == 3){
-      return game.at (2,6)
-    } else {
-      return game.at (1,1)
+  } else if (juego.estaGanado()) {
+    return game.at(1, 1)
+  } else if (juego.nivelActual().numero() == 2) {
+    return game.at(2, 6)
+  } else if (juego.nivelActual().numero() == 3) {
+    return game.at(2, 6)
+  } else {
+    return game.at(1, 1)
     }
   }
 
